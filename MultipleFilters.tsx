@@ -19,8 +19,8 @@ export default function MultipleFilters() {
     const curretFilters = appliedFilters
       .filter((filter) => filter.isSelected)
       .map((filter) => filter.name);
-    const updatedItems = items.filter(
-      (item) => curretFilters.indexOf(item.category) === -1
+    const updatedItems = items.filter((item) =>
+      curretFilters.every((filter) => item.category !== filter)
     );
     setFilteredItems(updatedItems);
   }, [appliedFilters]);
